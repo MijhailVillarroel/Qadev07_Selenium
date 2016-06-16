@@ -28,6 +28,7 @@ public class Login extends BaseClass {
         passwordTestField.clear();
         passwordTestField.sendKeys(password);
     }
+
     public Dashboard clickSignInButton() {
         singInButton.click();
         return  new Dashboard();
