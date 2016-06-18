@@ -38,7 +38,6 @@ public class ProjectEdit extends  BaseClass{
 
     public void clickSaveEditButtonButton() {
         saveEditButton.click();
-        //return  new Dashboard();
     }
 
     public void clickLinkDeleteProject() {
