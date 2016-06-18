@@ -1,27 +1,34 @@
 package com.fundacionjala.selenio;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by mijhailvillarroel on 6/15/2016.
  */
 public class TestCreateProject {
+
+    public static final String USER_NAME = "mija.villa@gmail.com";
+    public static final String PASSWORD = "java123456789";
+    private Dashboard dashboard;
+    public static final String PROJECT_NAME = "12345103";
+
+    @Before
+    public void setUp() {
+        dashboard = Login.loginAS(USER_NAME, PASSWORD);
+    }
+
     @Test
     public void testLogin() {
-        PivotalHome pivotalHome = new PivotalHome();
-        Login login = pivotalHome.clickSingInLink();
-        login.setUserNameTestField("walter_mercado_jala");
-        login.setPasswordTestField("P@ssw0rd");
-        Dashboard dashboard = login.clickSignInButton();
+
         CreateProject createProject = dashboard.clickCreateProjectLink();
-        String expectedProjectName = "Testselenio78956";
-        createProject.projectNameTestField(expectedProjectName);
+        createProject.projectNameTestField(PROJECT_NAME);
         createProject.clickDisplayListButton();
         createProject.setSelectAccount();
         createProject.setSelectCheckBox();
         Project project = createProject.clickCreateButton();
-        assertEquals(expectedProjectName,project.getNameProjectTest());
+        assertEquals(PROJECT_NAME, project.getNameProjectTest());
     }
 }
